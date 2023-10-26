@@ -1,3 +1,7 @@
 import '../css/style.css'
+import '../css/bootstrap.min.css'
 
-document.querySelector('#app').innerHTML = "<h1>Hello RubyJS</h1>"
+import './elements'
+import './third_side'
+
+document.querySelector('#app').innerHTML = "<elm-home></elm-home>"
