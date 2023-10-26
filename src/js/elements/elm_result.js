@@ -1,11 +1,20 @@
-import products from "../../csv/products.csv?raw";
+import productsRaw from "../../csv/products.csv?raw";
 import { ENV } from "../env";
 
 export default class ElmResult extends HTMLElement {
   constructor() {
     super();
-    this.productsData();
-    this.initElm()
+
+    this.productsData((data) => {
+      let relData = [];
+
+      //if row
+      for (let row of data) {
+
+      };
+      console.log(data[0]);
+      return this.initElm(data)
+    })
   };
 
   connectedCallback() {
@@ -16,19 +25,18 @@ export default class ElmResult extends HTMLElement {
     return null
   };
 
-  productsData() {
-    return console.log(CSV.decode(products))
+  productsData(block) {
+    let data = CSV.decode(productsRaw, "code");
+    if (block) return block(data)
   };
 
-  initElm() {
+  initElm(products) {
     let template = `${`
 <table class='table'>
   <thead>
     <tr>
-      <th scope='col'>#</th>
-      <th scope='col'>First</th>
-      <th scope='col'>Last</th>
-      <th scope='col'>Handle</th>
+      <th scope='col'>ID</th>
+      <th scope='col'>Name</th>
     </tr>
   </thead>
   <tbody>

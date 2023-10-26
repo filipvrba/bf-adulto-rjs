@@ -1,13 +1,19 @@
-import 'products', '../../csv/products.csv?raw'
+import 'productsRaw', '../../csv/products.csv?raw'
 import ['ENV'], '../env'
 
 export default class ElmResult < HTMLElement
   def initialize
     super
 
-    products_data()
+    products_data() do |data|
+      rel_data = []
 
-    init_elm()
+      data.each do |row|
+        #if row
+      end
+      puts data[0]
+      init_elm(data)
+    end
   end
 
   def connectedCallback()
@@ -16,19 +22,18 @@ export default class ElmResult < HTMLElement
   def disconnectedCallback()
   end
 
-  def products_data()
-    puts CSV.decode(products)
+  def products_data(&block)
+    data = CSV.decode(productsRaw, "code")
+    block(data) if block
   end
 
-  def init_elm()
+  def init_elm(products)
     template = """
 <table class='table'>
   <thead>
     <tr>
-      <th scope='col'>#</th>
-      <th scope='col'>First</th>
-      <th scope='col'>Last</th>
-      <th scope='col'>Handle</th>
+      <th scope='col'>ID</th>
+      <th scope='col'>Name</th>
     </tr>
   </thead>
   <tbody>

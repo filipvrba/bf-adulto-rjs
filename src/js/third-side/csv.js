@@ -24,9 +24,15 @@ export default class CSV {
     let dResultRow = {};
 
     for (let i = 0; i < heads.length; i++) {
-      let head = heads[i];
-      dResultRow[head] = columns[i];
-      continue
+      let head;
+
+      if (columns[i] === undefined) {
+        break
+      } else {
+        head = heads[i];
+        dResultRow[head] = columns[i].replaceAll("\"", "");
+        continue
+      }
     };
 
     return dResultRow

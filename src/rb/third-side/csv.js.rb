@@ -9,20 +9,25 @@ export default class CSV
 
     m_data_tail.each do |row|
       a_columns = row.split(SYM_SPLIT)
-      d_row = CSV.row_split(a_data_head, a_columns)
-      a_result.push(d_row)
-    end
 
-    return a_result
-  end
+      d_row = CSV.row_split(a_data_head, a_columns)
+        a_result.push(d_row)
+      end
+
+      return a_result
+    end
 
   def self.row_split(heads, columns)
     d_result_row = {}
 
     (0...heads.length).step(1) do |i|
-      head = heads[i]
-      d_result_row[head] = columns[i]
-      next
+      unless columns[i] == undefined
+        head = heads[i]
+        d_result_row[head] = columns[i].gsub("\"", '')
+        next
+      else
+        break
+      end
     end
 
     return d_result_row
