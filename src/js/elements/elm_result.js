@@ -6,13 +6,8 @@ export default class ElmResult extends HTMLElement {
     super();
 
     this.productsData((data) => {
-      let relData = [];
-
-      //if row
-      for (let row of data) {
-
-      };
-      console.log(data[0]);
+      this._filter = new Filter(data);
+      console.log(this._filter.result("adult", "1"));
       return this.initElm(data)
     })
   };

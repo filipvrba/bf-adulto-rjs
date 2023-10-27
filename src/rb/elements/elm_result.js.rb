@@ -6,12 +6,9 @@ export default class ElmResult < HTMLElement
     super
 
     products_data() do |data|
-      rel_data = []
+      @filter = Filter.new(data)
 
-      data.each do |row|
-        #if row
-      end
-      puts data[0]
+      puts @filter.result(:adult, "1")
       init_elm(data)
     end
   end
