@@ -9,11 +9,11 @@ export default class Filter
     a_result = []
 
     @data.each do |columns|
-      puts columns[:adult]
-      if columns[key].index(/#{value}/) > -1
-        a_result.push(columns)
+      unless columns[key] == undefined
+        if columns[key].index(value) > -1
+          a_result.push(columns)
+        end
       end
-      return a_result
     end
     return a_result
   end

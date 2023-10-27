@@ -11,9 +11,9 @@ export default class Filter {
     let aResult = [];
 
     for (let columns of this._data) {
-      console.log(columns.adult);
-      if (columns[key].indexOf(new RegExp(value)) > -1) aResult.push(columns);
-      return aResult
+      if (columns[key] !== undefined) {
+        if (columns[key].indexOf(value) > -1) aResult.push(columns)
+      }
     };
 
     return aResult

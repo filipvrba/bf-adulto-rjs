@@ -22,7 +22,7 @@ export default class CSV
 
     (0...heads.length).step(1) do |i|
       unless columns[i] == undefined
-        head = heads[i]
+        head = heads[i].trim()
         d_result_row[head] = columns[i].gsub("\"", '')
         next
       else

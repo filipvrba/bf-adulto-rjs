@@ -29,7 +29,7 @@ export default class CSV {
       if (columns[i] === undefined) {
         break
       } else {
-        head = heads[i];
+        head = heads[i].trim();
         dResultRow[head] = columns[i].replaceAll("\"", "");
         continue
       }
