@@ -19,7 +19,7 @@ export default class ElmProductsBoard extends HTMLElement {
         <div class='card-body p-4'>
           <div class='col col-lg-3'>
             <div class='d-grid gap-2 d-md-flex justify-content-md-end'>
-              <button class='btn btn-success me-md-2' type='button'>✔ cp & re Adulto.cz</button>
+              <button class='btn btn-success me-md-2' type='button'>✔</button>
             </div>
           </div>
           <div class='col col-lg-6'>
