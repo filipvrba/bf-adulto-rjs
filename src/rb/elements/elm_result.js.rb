@@ -7,9 +7,8 @@ export default class ElmResult < HTMLElement
 
     products_data() do |data|
       @filter = Filter.new(data)
-
-      puts @filter.result(:adult, "1")
-      init_elm(data)
+      filtered_data = @filter.result(:adult, "1")
+      init_elm(filtered_data)
     end
   end
 
@@ -25,6 +24,21 @@ export default class ElmResult < HTMLElement
   end
 
   def init_elm(products)
+    l_tr_dom = lambda do
+      result = []
+
+      products.each do |product|
+        tr_dom = """
+        <tr>
+          <th scope='row'>#{product[:code]}</th>
+          <td>#{product[:name]}</td>
+        </tr>
+        """
+        result.push(tr_dom)
+      end
+      return result.join("\n")
+    end
+
     template = """
 <table class='table'>
   <thead>
@@ -34,23 +48,7 @@ export default class ElmResult < HTMLElement
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope='row'>1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope='row'>2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope='row'>3</th>
-      <td colspan='2'>Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    #{l_tr_dom()}
   </tbody>
 </table>
     """

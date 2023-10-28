@@ -7,8 +7,8 @@ export default class ElmResult extends HTMLElement {
 
     this.productsData((data) => {
       this._filter = new Filter(data);
-      console.log(this._filter.result("adult", "1"));
-      return this.initElm(data)
+      let filteredData = this._filter.result("adult", "1");
+      return this.initElm(filteredData)
     })
   };
 
@@ -26,6 +26,22 @@ export default class ElmResult extends HTMLElement {
   };
 
   initElm(products) {
+    let lTrDom = () => {
+      let result = [];
+
+      for (let product of products) {
+        let trDom = `${`
+        <tr>
+          <th scope='row'>${product.code}</th>
+          <td>${product.name}</td>
+        </tr>
+        `}`;
+        result.push(trDom)
+      };
+
+      return result.join("\n")
+    };
+
     let template = `${`
 <table class='table'>
   <thead>
@@ -35,23 +51,7 @@ export default class ElmResult extends HTMLElement {
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope='row'>1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope='row'>2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope='row'>3</th>
-      <td colspan='2'>Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    ${lTrDom()}
   </tbody>
 </table>
     `}`;

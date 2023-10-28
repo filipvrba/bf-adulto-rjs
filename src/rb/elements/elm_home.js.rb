@@ -19,7 +19,7 @@ export default class ElmHome < HTMLElement
 #  </div>
 #</div>
 #    """
-    template = "<elm-result></elm-result>"
+    template = "<elm-products-board></elm-products-board>"
 
     self.innerHTML = template
   end

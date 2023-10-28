@@ -20,7 +20,7 @@ export default class ElmHome extends HTMLElement {
     //  </div>
     //</div>
     //    """
-    let template = "<elm-result></elm-result>";
+    let template = "<elm-products-board></elm-products-board>";
     return this.innerHTML = template
   }
 }
