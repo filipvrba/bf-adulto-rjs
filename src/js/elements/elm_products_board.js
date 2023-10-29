@@ -1,3 +1,5 @@
+import { ENV } from "../env";
+
 export default class ElmProductsBoard extends HTMLElement {
   constructor() {
     super();
@@ -7,7 +9,8 @@ export default class ElmProductsBoard extends HTMLElement {
   };
 
   btnSuccessClick() {
-    return Events.emit(ElmProductsBoard.ENV_BTNSUCC)
+    Events.emit(ElmProductsBoard.ENV_BTNSUCC);
+    return Time.delay(1_000, () => window.open(ENV.VITE_ADULTO))
   };
 
   connectedCallback() {
