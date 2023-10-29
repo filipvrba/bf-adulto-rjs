@@ -51,6 +51,11 @@ export default class ElmResult extends HTMLElement {
   };
 
   initElm(products) {
+    if (products.length === 0) {
+      this.innerHTML = `${`\n      <h2 class=''display-2>No dates found</h2>\n      <p class='lead'>Please check the availability of the csv file from Shoptet.</p>\n      `}`;
+      return
+    };
+
     let lTrDom = () => {
       let result = [];
 

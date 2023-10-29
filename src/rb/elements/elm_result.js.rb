@@ -41,6 +41,14 @@ export default class ElmResult < HTMLElement
   end
 
   def init_elm(products)
+    if products.length == 0
+      self.innerHTML = """
+      <h2 class=''display-2>No dates found</h2>
+      <p class='lead'>Please check the availability of the csv file from Shoptet.</p>
+      """
+      return
+    end
+
     l_tr_dom = lambda do
       result = []
 
