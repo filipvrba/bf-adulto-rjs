@@ -1,4 +1,3 @@
-#import 'productsRaw', '../../csv/products.csv?raw'
 import ['ENV'], '../env'
 import 'ProductsBoard', './elm_products_board'
 
@@ -34,7 +33,8 @@ export default class ElmResult < HTMLElement
   end
 
   def products_data(&block)
-    Net.wget(ENV.VITE_BF_PRODUCTS) do |products_raw|
+    url = ENV.VITE_BF_PRODUCTS
+    Net.wget(url) do |products_raw|
       data = CSV.decode(products_raw, "code")
       block(data) if block
     end

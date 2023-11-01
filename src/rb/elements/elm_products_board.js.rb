@@ -13,9 +13,6 @@ export default class ElmProductsBoard < HTMLElement
 
   def btn_success_click()
     Events.emit(ENV_BTNSUCC)
-    Time.delay(1000) do
-      window.open(ENV.VITE_ADULTO)    
-    end
   end
 
   def connectedCallback()

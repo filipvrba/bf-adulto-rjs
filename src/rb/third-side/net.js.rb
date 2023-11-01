@@ -1,10 +1,8 @@
 export default class Net
   def self.wget url, &callback
-    headers = Headers.new
-    headers.append('Content-Type','text/plain; charset=UTF-8')
-
-    fetch(url, headers)
+    fetch(url)
     .then(lambda do |response|
+      puts response
       response.array_buffer()
     end)
     .then(lambda do |buffer|
@@ -12,6 +10,9 @@ export default class Net
       text    = decoder.decode(buffer)
 
       callback(text) if callback
+    end)
+    .catch(lambda do |error|
+      callback("") if callback
     end)
   end
 end

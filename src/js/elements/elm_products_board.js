@@ -9,8 +9,7 @@ export default class ElmProductsBoard extends HTMLElement {
   };
 
   btnSuccessClick() {
-    Events.emit(ElmProductsBoard.ENV_BTNSUCC);
-    return Time.delay(1_000, () => window.open(ENV.VITE_ADULTO))
+    return Events.emit(ElmProductsBoard.ENV_BTNSUCC)
   };
 
   connectedCallback() {

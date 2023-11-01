@@ -1,4 +1,3 @@
-//import 'productsRaw', '../../csv/products.csv?raw'
 import { ENV } from "../env";
 import ProductsBoard from "./elm_products_board";
 
@@ -44,7 +43,9 @@ export default class ElmResult extends HTMLElement {
   };
 
   productsData(block) {
-    return Net.wget(ENV.VITE_BF_PRODUCTS, (productsRaw) => {
+    let url = ENV.VITE_BF_PRODUCTS;
+
+    return Net.wget(url, (productsRaw) => {
       let data = CSV.decode(productsRaw, "code");
       if (block) return block(data)
     })
