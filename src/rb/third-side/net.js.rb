@@ -2,7 +2,6 @@ export default class Net
   def self.wget url, &callback
     fetch(url)
     .then(lambda do |response|
-      puts response
       response.array_buffer()
     end)
     .then(lambda do |buffer|
